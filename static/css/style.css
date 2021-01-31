@@ -10,3 +10,7 @@ color: antiquewhite
 form{
     color: rgb(177,168,168);
 }
+
+.form-control{
+    background-color: rgb(177,168,168);
+}

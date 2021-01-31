@@ -6,10 +6,32 @@ def home(request):
 
 # About Page
 def about(request):
-    return render(request,'about.html')    
+    return render(request,'about.html')
+
 
 # Contact Page
 def contact(request):
     return render(request,'contact.html')
-    
+
+
+# DashBoard Page
+def dashboard(request):
+    return render(request,'dashboard.html')
+
+# Logout Page
+def user_logout(request):
+    pass
+
+# Signup Page
+def signup(request):
+    return render(request,'signup.html')
+
+# Login Page
+def user_login(request):
+    return render(request,'login.html')
+       
+
+
+        
+
          
