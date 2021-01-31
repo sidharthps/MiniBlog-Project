@@ -1,4 +1,5 @@
 from django.shortcuts import render,HttpResponseRedirect
+from .forms import SignUpForm,LoginForm
 
 # Home Page
 def home(request):
@@ -23,12 +24,16 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 # Signup Page
-def signup(request):
-    return render(request,'signup.html')
+def user_signup(request):
+    form = SignUpForm()
+    return render(request,'signup.html',{'form':form})
 
 # Login Page
 def user_login(request):
-    return render(request,'login.html')
+    form = LoginForm
+    return render(request,'login.html',{'form':form})
+
+    
        
 
 
