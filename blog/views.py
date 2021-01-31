@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponseRedirect
 
 # Home Page
 def home(request):
@@ -20,7 +20,7 @@ def dashboard(request):
 
 # Logout Page
 def user_logout(request):
-    pass
+    return HttpResponseRedirect('/')
 
 # Signup Page
 def signup(request):
