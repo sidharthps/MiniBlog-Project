@@ -7,7 +7,7 @@
    {%csrf_token%}
    {{form.as_p}}
    <input type="submit" value="add" class="btn btn-success">
-   <input type="submit" value="Cancel" class="btn btn-danger">
+   <a href="{%url 'dashboard'%}" class="btn btn-danger">Cancel</a>
    </form>
 
 </div>
