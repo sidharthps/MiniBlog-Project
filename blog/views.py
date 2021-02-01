@@ -90,9 +90,10 @@ def add_post(request):
 
               
 
-#Update Post        
+#Update/Edit Post        
 
 def update_post(request,id):
+    form = PostForm
     if request.user.is_authenticated:
         if request.method == 'POST':
             pi = Post.objects.get(pk=id)
@@ -102,7 +103,7 @@ def update_post(request,id):
             else:
                 pi = Post.objects.get(pk=id)
                 form = PostForm(instance=pi)    
-        return render(request,'updatepost.html')
+        return render(request,'updatepost.html',{'form':form})
     else:
         return HttpResponseRedirect('/login')  
 
