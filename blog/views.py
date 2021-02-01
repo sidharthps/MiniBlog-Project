@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponseRedirect
-from .forms import SignUpForm,LoginForm
+from .forms import SignUpForm,LoginForm,PostForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from . models import Post
@@ -64,9 +64,48 @@ def user_login(request):
             return render(request,'login.html',{'form':form})
     else:
         return HttpResponseRedirect('/dashboard/')
+#Add Post        
 
-        
-        
+def add_post(request):
+    if request.user.is_authenticated:
+        if request.user.is_authenticated:
+            if request.method == 'POST':
+             form = PostForm(request.POST)
+             if form.is_valid():
+                title = form.cleaned_data['title']
+                desc = form.cleaned_data['desc']
+                pst = Post(title=title,desc=desc)
+                pst.save()
+                form = PostForm()
+            else:
+                form = PostForm()
+            return render(request,'addpost.html',{'form':form})
+            
+            
+    else:
+        return HttpResponseRedirect('/login')        
+                
+           
+    
+
+              
+
+#Update Post        
+
+def update_post(request,id):
+    if request.user.is_authenticated:
+        return render(request,'updatepost.html')
+    else:
+        return HttpResponseRedirect('/login')  
+
+#Delete Post        
+
+def delete_post(request,id):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/dashboard')
+    else:
+        return HttpResponseRedirect('/login')            
+
 
     
 
